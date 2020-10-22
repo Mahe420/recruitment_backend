@@ -24,12 +24,18 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User addUser(User user) throws UserRegisteredException {
-		User userfind = userRepository.findByEmailAndPhoneNumber(user.getEmail(), user.getPhoneNumber());
+		User userfind=new User();
+		try {
+			userfind = userRepository.findByEmailAndPhoneNumber(user.getEmail(), user.getPhoneNumber());
+		}
+		catch(Exception e) {
+			throw new UserRegisteredException("user is already register");
+		}
 		if (Optional.ofNullable(userfind) == null)
 			throw new UserRegisteredException("user is already register");
 		else {
 			User userdata = userRepository.save(user);
-			UserStatus userStatus = new UserStatus(userdata.getUserName(), userdata,false,false,false, false, false);
+			UserStatus userStatus = new UserStatus(userdata.getUserName(), userdata,false,false,false, false, false,false);
 			userStatusRepository.save(userStatus);
 			return userdata;
 		}

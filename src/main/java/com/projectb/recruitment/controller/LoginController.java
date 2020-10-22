@@ -25,7 +25,7 @@ public class LoginController {
 	
 	@PostMapping
 	public ResponseEntity<?> loginUser(@RequestBody Login login){
-		Boolean value=loginService.loginUser(login);
+		Login value=loginService.loginUser(login);
 		return ResponseEntity.status(HttpStatus.OK).body(value);
 	}
 	

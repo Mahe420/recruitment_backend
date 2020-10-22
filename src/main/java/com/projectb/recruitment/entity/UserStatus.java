@@ -20,6 +20,7 @@ private boolean appTaken;
 private boolean appsStatus;
 private boolean techTaken;
 private boolean techAppsStatus;
+private boolean rejected;
 
 public UserStatus() {
 }
@@ -88,8 +89,17 @@ public void setTechAppsStatus(boolean techAppsStatus) {
 	this.techAppsStatus = techAppsStatus;
 }
 
+
+public boolean isRejected() {
+	return rejected;
+}
+
+public void setRejected(boolean rejected) {
+	this.rejected = rejected;
+}
+
 public UserStatus(int id, String userName, User user, boolean resumeStatus, boolean appTaken, boolean appsStatus,
-		boolean techTaken, boolean techAppsStatus) {
+		boolean techTaken, boolean techAppsStatus,boolean rejected) {
 	super();
 	this.id = id;
 	this.userName = userName;
@@ -99,10 +109,11 @@ public UserStatus(int id, String userName, User user, boolean resumeStatus, bool
 	this.appsStatus = appsStatus;
 	this.techTaken = techTaken;
 	this.techAppsStatus = techAppsStatus;
+	this.rejected=rejected;
 }
 
 public UserStatus(String userName, User user, boolean resumeStatus, boolean appTaken, boolean appsStatus,
-		boolean techTaken, boolean techAppsStatus) {
+		boolean techTaken, boolean techAppsStatus,boolean rejected) {
 	super();
 	this.userName = userName;
 	this.user = user;
@@ -111,6 +122,7 @@ public UserStatus(String userName, User user, boolean resumeStatus, boolean appT
 	this.appsStatus = appsStatus;
 	this.techTaken = techTaken;
 	this.techAppsStatus = techAppsStatus;
+	this.rejected=rejected;
 }
 
 @Override

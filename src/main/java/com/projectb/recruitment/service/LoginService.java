@@ -9,7 +9,7 @@ import com.projectb.recruitment.entity.Login;
 @Service
 public interface LoginService {
 
-	Boolean loginUser(Login login);
+	Login loginUser(Login login);
 
 	List<Login> getAllLogin();
 

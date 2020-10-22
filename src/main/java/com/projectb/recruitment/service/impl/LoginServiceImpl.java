@@ -17,12 +17,12 @@ public class LoginServiceImpl implements LoginService {
 	LoginRepository loginRepository;
 	
 	@Override
-	public Boolean loginUser(Login login) {
+	public Login loginUser(Login login) {
 		Login loginData=loginRepository.findByUsernameAndPassword(login.getUsername(),login.getPassword());
 		if(Optional.ofNullable(loginData)==null) {
-			return false;
+			return null;
 		}
-		return true;
+		return loginData;
 	}
 
 	@Override
