@@ -1,6 +1,5 @@
 package com.projectb.recruitment.service.impl;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +7,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.projectb.recruitment.entity.Email;
 import com.projectb.recruitment.entity.Login;
 import com.projectb.recruitment.service.EmailService;
 import com.projectb.recruitment.service.LoginService;
@@ -22,13 +22,13 @@ public class EmailServiceImpl implements EmailService {
 	private JavaMailSender jms;
 
 	@Override
-	public void select(HashMap details) throws Exception {
+	public void select(Email details) throws Exception {
 		List<Login> loginList = loginService.getAllLogin();
 		Login login = loginList.stream()
-				.filter(log -> log.getUser().getId() == Integer.valueOf(details.get("id").toString())).findFirst()
+				.filter(log -> log.getUser().getId() == details.getId()).findFirst()
 				.orElseThrow(()->new Exception("error in stream"));
 		SimpleMailMessage msg = new SimpleMailMessage();
-		msg.setTo(details.get("email").toString());
+		msg.setTo(details.getEmail());
 		msg.setSubject("Result");
 		msg.setText(
 				"Hey,\n\nYou have cleared. Please login to take the next test\n\nUserName: "+login.getUsername()+"\nPassword: "+login.getPassword()+"\n\nThanks & Regards\nRecruitment Team");

@@ -1,7 +1,5 @@
 package com.projectb.recruitment.controller;
 
-import java.util.HashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.projectb.recruitment.entity.Email;
 import com.projectb.recruitment.service.EmailService;
 
 @RestController
@@ -19,7 +18,7 @@ public class EmailController {
 	EmailService emailService;
 	
 	@PostMapping(value="/select")
-	public void select(@RequestBody HashMap details) throws Exception {
+	public void select(@RequestBody Email details) throws Exception {
 	emailService.select(details);	
 	}
 	

@@ -1,10 +1,10 @@
 package com.projectb.recruitment.service;
 
-import java.util.HashMap;
+import com.projectb.recruitment.entity.Email;
 
 public interface EmailService {
 
-	public void select(HashMap details) throws Exception;
+	public void select(Email details) throws Exception;
 	public void reject(String email); 
 	public void success(String email);
 }
